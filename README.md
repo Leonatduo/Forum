@@ -9,76 +9,41 @@
 	<a href="https://gitee.com/y_project/RuoYi-Cloud/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
 </p>
 
-## 平台简介
+## プラットフォーム紹介
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
+前後端分離モードを採用し、マイクロサービス版のフロントエンドを使用します。
+バックエンドには Spring Boot、Spring Cloud & Alibaba を採用しています。
+レジストリセンターとコンフィギュレーションセンターには Nacos を選択し、権限認証には Redis を使用しています。
+トラフィック制御フレームワークには Sentinel を、分散トランザクションには Seata を選択しています。
+  
 
-* 采用前后端分离的模式，微服务版本前端(基于 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue))。
-* 后端采用Spring Boot、Spring Cloud & Alibaba。
-* 注册中心、配置中心选型Nacos，权限认证使用Redis。
-* 流量控制框架选型Sentinel，分布式事务选型Seata。
-* 提供了技术栈（[Vue3](https://v3.cn.vuejs.org) [Element Plus](https://element-plus.org/zh-CN) [Vite](https://cn.vitejs.dev)）版本[RuoYi-Cloud-Vue3](https://github.com/yangzongzhuan/RuoYi-Cloud-Vue3)，保持同步更新。
-* 如需不分离应用，请移步 [RuoYi](https://gitee.com/y_project/RuoYi)，如需分离应用，请移步 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue)
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
-* 阿里云优惠券：[点我领取](https://www.aliyun.com/minisite/goods?userCode=brki8iof&share_source=copy_link)，腾讯云优惠券：[点我领取](https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console)&nbsp;&nbsp;
-
-#### 友情链接 [若依/RuoYi-Cloud](https://gitee.com/zhangmrit/ruoyi-cloud) Ant Design版本。
-
-## 系统模块
-
-~~~
-com.ruoyi     
-├── ruoyi-ui              // 前端框架 [80]
-├── ruoyi-gateway         // 网关模块 [8080]
-├── ruoyi-auth            // 认证中心 [9200]
-├── ruoyi-api             // 接口模块
-│       └── ruoyi-api-system                          // 系统接口
-├── ruoyi-common          // 通用模块
-│       └── ruoyi-common-core                         // 核心模块
-│       └── ruoyi-common-datascope                    // 权限范围
-│       └── ruoyi-common-datasource                   // 多数据源
-│       └── ruoyi-common-log                          // 日志记录
-│       └── ruoyi-common-redis                        // 缓存服务
-│       └── ruoyi-common-seata                        // 分布式事务
-│       └── ruoyi-common-security                     // 安全模块
-│       └── ruoyi-common-swagger                      // 系统接口
-├── ruoyi-modules         // 业务模块
-│       └── ruoyi-system                              // 系统模块 [9201]
-│       └── ruoyi-gen                                 // 代码生成 [9202]
-│       └── ruoyi-job                                 // 定时任务 [9203]
-│       └── ruoyi-file                                // 文件服务 [9300]
-├── ruoyi-visual          // 图形化管理模块
-│       └── ruoyi-visual-monitor                      // 监控中心 [9100]
-├──pom.xml                // 公共依赖
-~~~
-
-## 架构图
+## アーキテクチャ図
 
 <img src="https://oscimg.oschina.net/oscnet/up-82e9722ecb846786405a904bafcf19f73f3.png"/>
 
-## 内置功能
+## 機能
 
-1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
-3.  岗位管理：配置系统用户所属担任职务。
-4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
-5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
-6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
-10. 登录日志：系统登录日志记录查询包含登录异常。
-11. 在线用户：当前系统中活跃用户状态监控。
-12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
-13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14. 系统接口：根据业务代码自动生成相关的api接口文档。
-15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. 在线构建器：拖动表单元素生成相应的HTML代码。
-17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+ユーザー管理：ユーザーはシステムの操作者で、この機能は主にシステムユーザーの設定を完了します。
+部署管理：システムの組織構成（会社、部署、グループ）を設定し、ツリー構造で表示し、データ権限をサポートします。
+職位管理：システムユーザーの所属する職務を設定します。
+メニュー管理：システムメニュー、操作権限、ボタン権限の識別子などを設定します。
+役割管理：役割のメニュー権限の割り当て、役割による組織単位でのデータ範囲権限の設定を行います。
+辞書管理：システムでよく使用される比較的固定されたデータをメンテナンスします。
+パラメータ管理：システムの動的設定によく使用されるパラメータを管理します。
+通知・公告：システムの通知・公告情報の発信とメンテナンスを行います。
+操作ログ：システムの通常操作のログ記録と照会、システムの異常情報のログ記録と照会を行います。
+ログインログ：システムのログインログの記録照会（ログイン異常を含む）を行います。
+オンラインユーザー：現在のシステム内のアクティブなユーザーの状態をモニタリングします。
+タイマータスク：オンラインでの（追加、修正、削除）タスクスケジューリング（実行結果のログを含む）を行います。
+コード生成：前後端のコード生成（java、html、xml、sql）を行い、CRUD ダウンロードをサポートします。
+システムインターフェース：業務コードに基づいて自動生成される関連する API インターフェースドキュメントを作成します。
+サービスモニタリング：現在のシステムの CPU、メモリ、ディスク、スタックなどの関連情報を監視します。
+オンラインビルダー：フォーム要素をドラッグして対応する HTML コードを生成します。
+コネクションプールモニタリング：現在のシステムのデータベースコネクションプールの状態を監視し、SQL 分析を行い、システムのパフォーマンスボトルネックを特定することができます。
 
 
 
-## 演示图
+## 展示図
 
 <table>
     <tr>
